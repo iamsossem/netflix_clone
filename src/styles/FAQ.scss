@@ -1,3 +1,19 @@
 .faq{
   @include component_size;
 }
+.faq-list{
+  li{
+    margin: 5px;
+    button{
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px;
+      font-size: $font-size-medium;
+    }
+    p{
+      font-size: $font-size-medium;
+      padding: 10px;
+    }
+  }
+}
