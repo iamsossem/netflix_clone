@@ -1,0 +1,74 @@
+header{
+  height: 80vh;
+  background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url('../../public/images/bg.jpg'); 
+  // background-image: url('../../public/images/bg.jpg');
+  background-position: top center;
+}
+
+nav{
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  @include responsive($breakpoint-medium){
+    width: 95%;
+  }
+  h1{
+    color: $primary-color;
+    font-size: $font-size-large;
+  }
+  div{
+    select{
+      padding: 0.4rem 1rem;
+      margin-right: 10px;
+      background-color: transparent;
+      color: $text-color;
+      option{
+        background-color: #fff;
+        color: #000;
+      }
+    }
+    button{
+      @include button-style;
+    }
+  }
+}
+
+.header-content{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  h2{
+    font-size: 60px;
+    margin-bottom: 20px;
+    @include responsive($breakpoint-medium){
+      font-size: 40px;
+    }
+  }
+  h4{
+    font-size: $font-size-medium;
+    margin-bottom: 20px;
+  }
+  p{
+    font-size: $font-size-medium;
+  }
+  .email-box{
+    margin-top: 20px;
+    input{
+      font-size: $font-size-medium;
+      padding: 0.5rem 1rem;
+      margin-right: 10px;
+      @include responsive($breakpoint-small){
+        width: 100%;
+      }
+    }
+    button{
+      font-size: $font-size-medium;      
+      @include button-style;
+    }
+  }
+}
+

@@ -1,0 +1,20 @@
+.banner{
+  @include component_size;   
+  padding: 20px;
+  transition: 0.5s;
+  &:hover{
+    transform: scale(1.1);
+    filter: brightness(1.4);
+  }
+}
+.banner-text{
+  border-radius: 10px;
+  padding: 20px;
+  background-image: linear-gradient(to right, #333349, #232344);
+  display: flex;
+  justify-content: space-between;
+  button{
+    @include button-style;
+    background-color: #444;
+  }
+}
