@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { VscAdd,VscChromeClose } from "react-icons/vsc";
 
 const FAQList = [
   {id:1, 
@@ -27,8 +28,13 @@ const FAQ = () => {
         {
           FAQList.map((list,idx)=>{
             return <li key={list.id}>
-              <button onClick={()=>handleClick(idx)}>{list.Q}</button>
-              {openIdx === idx && <p>{list.A}</p>}
+              <button 
+                onClick={()=>handleClick(idx)}>
+                <span>{list.Q}</span>
+                {openIdx === idx ? <VscChromeClose /> : <VscAdd />}
+              </button>              
+              {/* {openIdx === idx && <p>{list.A}</p>} */}
+              {<p className={openIdx === idx? "open":"" }>{list.A}</p>}
             </li>
           })
         }

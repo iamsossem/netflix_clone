@@ -1,0 +1,63 @@
+.move-slider{
+  @include component_size;
+  position: relative;  
+  //기본 화살표에 가상 요소 삭제
+  .slick-prev:before,
+  .slick-next:before{
+    content: '';
+  }
+  .btn-prev,
+  .btn-next{
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);    
+    z-index: 10;
+    width: 40px;
+    height: 70px;
+    text-align: center;
+    line-height: 70px;
+    cursor: pointer;
+    color: #fff;
+    &:hover{
+      background-color: rgba(255,255,255,0.5);
+      color: black;
+    }
+  }
+  .btn-prev{
+    left: -50px;
+  }
+  .btn-next{
+    right: -50px;
+  }
+}
+.movie-card{
+  position: relative;
+  transition: 0.5s;
+  cursor: pointer;
+  &:hover{
+    transform: scale(1.05);
+  }
+  span{
+    position: absolute;
+    left: -10px;
+    bottom: 0;
+    font-size: 100px;
+    font-weight: bolder;
+    // -webkit-text-stroke: 2px #fff;
+    // -webkit-text-fill-color: #000;
+    color: #000;
+    text-shadow: -2px -2px 0 #fff,  //왼쪽위
+                 2px -2px 0 #fff,   //오른쪽 위
+                 -2px 2px 0 #fff,   //왼쪽 아래
+                 2px 2px 0 #fff;    //오른쪽 아래
+  }
+  img{
+    width: 90%;
+    margin: 20px auto;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}

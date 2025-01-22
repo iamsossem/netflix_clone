@@ -1,0 +1,42 @@
+header .membership{
+  width: 30%;
+}
+.membership{
+  @include component_size;
+  text-align: center;  
+}
+.email-box{
+  margin: 20px auto;  
+  position: relative;
+  display: flex;
+  justify-content: center;
+  label{
+    position: absolute;
+    color: #aaa;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s;
+  }
+  &.focused{
+    label{
+      top: 15px;
+      font-size: 10px;
+    }
+  }
+  input{    
+    flex: 1;    
+    font-size: $font-size-medium;    
+    padding: 0.5rem 1rem;
+    padding-top: 20px;
+    margin-right: 10px;
+    transition: 0.3s;
+    @include responsive($breakpoint-small){
+      width: 100%;
+    }
+  }
+  button{
+    font-size: $font-size-medium;      
+    @include button-style;
+  }
+}

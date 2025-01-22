@@ -5,15 +5,25 @@
   li{
     margin: 5px;
     button{
-      display: block;
+      display: flex;
+      justify-content: space-between;
       width: 100%;
       text-align: left;
       padding: 10px;
       font-size: $font-size-medium;
-    }
+      position: relative;      
+    }    
     p{
-      font-size: $font-size-medium;
-      padding: 10px;
+      font-size: $font-size-medium;   
+      height: 0;     
+      opacity: 0;   
+      transition: 0.3s; 
     }
+    p.open{   
+      height: 150px;  
+      padding: 10px 0;       
+      opacity: 1;
+    }
+
   }
 }

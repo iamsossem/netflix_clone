@@ -36,6 +36,7 @@ nav{
 }
 
 .header-content{
+  width: 100%;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -54,21 +55,6 @@ nav{
   }
   p{
     font-size: $font-size-medium;
-  }
-  .email-box{
-    margin-top: 20px;
-    input{
-      font-size: $font-size-medium;
-      padding: 0.5rem 1rem;
-      margin-right: 10px;
-      @include responsive($breakpoint-small){
-        width: 100%;
-      }
-    }
-    button{
-      font-size: $font-size-medium;      
-      @include button-style;
-    }
   }
 }
 
