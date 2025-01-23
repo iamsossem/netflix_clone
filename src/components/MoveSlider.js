@@ -1,21 +1,28 @@
 import Slider from "react-slick"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useEffect, useRef, useState } from "react";
+import axios from "axios";
 
-const movies = [
-  {id:1, title:"첫번째", image:"./images/movie1.jpg", tag:",최신등록"},
-  {id:2, title:"두번째", image:"./images/movie2.jpg", tag:",최신등록"},
-  {id:3, title:"세번째", image:"./images/movie3.jpg", tag:",최신등록"},
-  {id:4, title:"네번째", image:"./images/movie4.jpg", tag:",최신등록"},
-  {id:5, title:"다섯번째", image:"./images/movie5.jpg", tag:",최신등록"},
-  {id:6, title:"여섯번째", image:"./images/movie6.jpg", tag:",최신등록"},
-  {id:7, title:"일곱번째", image:"./images/movie7.jpg", tag:",최신등록"},
-  {id:8, title:"여덟번째", image:"./images/movie8.jpg", tag:",최신등록"},
-  {id:9, title:"아홉번째", image:"./images/movie9.jpg", tag:",최신등록"},
-  {id:10, title:"열번째", image:"./images/movie10.jpg", tag:",최신등록"}
-];
+const MoveSlider = () => {  
+  const [movies, setMovies] = useState([]);
+  const [error,setError] = useState(null);  
+  const fetchMovies = async ()=>{
+    const API_KEY="decc67e8f617c228c9c976bb05cd39ca";
+    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=ko-KR&page=1`;
 
-const MoveSlider = () => {
+    try{
+      const response = await axios.get(url);    
+      setMovies( response.data.results.slice(0,10));      
+    } catch(err){
+      setError("영화 데이터를 가져오는 중 오류 발생");
+    }
+  }
+
+  useEffect(()=>{
+    fetchMovies();
+  },[]);
+
   const settings = {
     dots: false,
     infinite: false,
@@ -27,21 +34,19 @@ const MoveSlider = () => {
     prevArrow: <SamplePrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 960,
         settings: {
-          slidesToShow: 3
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
         }
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2
-        }
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
         }
       }
     ]
@@ -64,15 +69,16 @@ const MoveSlider = () => {
       >▶</div>
     );
   }
+
   return (
     <div className="move-slider">
       <h2>지금 뜨는 콘텐츠</h2>
       <Slider {...settings}>
         {
-          movies.map((list)=>{
+          movies.map((list,idx)=>{
             return <div className="movie-card" key={list.id}>
-              <span>{list.id}</span>
-              <img src={list.image} alt={list.title}/>
+              <span>{idx+1}</span>
+              <img src={`https://image.tmdb.org/t/p/w342${list.poster_path}`} alt={list.title}/>
             </div>
           })
         }
