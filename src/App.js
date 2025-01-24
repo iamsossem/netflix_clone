@@ -11,21 +11,21 @@ import Login from "./components/Login";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={
-          <div className="app">
-            <Header />
-            <Banner />
-            <MoveSlider />
-            <WhyJoin />
-            <FAQ />
-            <Membership />
-            <Footer />
-          </div>
-         }/>
-         <Route path="/login" element={<Login />}/>
-    </Routes>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <Routes>
+          <Route path="/" element={
+            <div className="app">
+              <Header />
+              <Banner />
+              <MoveSlider />
+              <WhyJoin />
+              <FAQ />
+              <Membership />
+              <Footer />
+            </div>
+          }/>
+          <Route path="/login" element={<Login />}/>
+          </Routes>
     </BrowserRouter>
   );
 };
